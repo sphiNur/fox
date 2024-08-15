@@ -18,5 +18,6 @@ export default defineConfig({
   },
   preview: {
     outDir: 'docs',
-  }
+  },
+  base: '/fox/'
 })
