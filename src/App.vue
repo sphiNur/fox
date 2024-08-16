@@ -11,22 +11,30 @@ const data = ref({
   cash: 0,
 });
 
+const toast = ref({
+  class: "alert alert-info",
+  status: false,
+  msg: "toast",
+})
+
 function onSubmit() {
-  console.log(data.value);
+  // toast.value.status = Object.values(data.value).some(value => typeof value === 'number' || isNaN(value));
 }
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-  </header>
-
   <main>
     <div v-for="(value, key) in data" :key="key">
       <TextFiled v-model="data[key]" :name="key.charAt(0).toUpperCase() + key.slice(1)" />
     </div>
     <br/>
     <button class="btn" @click="onSubmit">Submit</button>
+
+    <div class="toast" v-if="toast.status">
+      <div :class="toast.class">
+        <span>{{ toast.msg }}</span>
+      </div>
+    </div>
   </main>
 </template>
 
@@ -35,20 +43,11 @@ header {
   line-height: 1.5;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
 @media (min-width: 1024px) {
   header {
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
   }
 }
 </style>
