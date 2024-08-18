@@ -33,5 +33,7 @@ watch(input, (newValue) => {
 </template>
 
 <style scoped>
-
+label {
+  margin-bottom: 0.3rem;
+}
 </style>
